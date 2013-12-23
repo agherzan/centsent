@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#
+# A tiny script which sends a notify message to system when new message arrives in centerim
+#
+
+CENTERIM=centerim5
+
+ACTIVEPID=`xdotool getwindowpid $(xdotool getwindowfocus)`
+CENPID=`pidof -s $CENTERIM`
+
+# Start with centerim pid and go to all parents until we find ACTIVEPID
+# If we find ACTIVEPID exit script
+current=$CENPID
+while [ "$current" != "1" ]; do
+    # No spaces please
+    parent=`ps -p $current -o ppid= | sed 's/ //g'`
+    if [ "$parent" == "$ACTIVEPID" ]; then
+        exit 0
+    fi
+    current=$parent
+done
+
+# If we get here then we didn't find ACTIVEPID in patrent tree
+notify-send -u low -t 100 "Centerim message from: $EVENT_REMOTE_USER" "Message: $EVENT_MESSAGE \n $CURPID"
