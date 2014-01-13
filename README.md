@@ -4,7 +4,7 @@
     - [B.1. Prerequisites](#b1-prerequisites)
     - [B.2. Install](#b2-install)
 - [C. Configuration](#c-configuration)
-
+- [D. Running In Dunst](#d-running-in-dunst)
 
 A. Description
 ==============
@@ -36,3 +36,10 @@ C. Configuration
 ================
 Run centerim, go to Setting/Plugins, activate "External actions" and set
 "Command:" to point to the file you copied in 'B.2. Install'.
+
+![Screenshot](screens/centerim-set-plugin.jpg)
+
+
+D. Running In Dunst
+===================
+![Screenshot](screens/new-notification-dunst.jpg)
